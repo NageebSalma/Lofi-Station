@@ -2,7 +2,12 @@ const express = require("express");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const axios = require('axios');
+const path = require("path");
+app.use(express.static(path.join(__dirname, 'lofi-station')));
 
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'lofi-station', 'public/index.html'));
+});
 let affirmation 
 
 
